@@ -1,2 +1,2 @@
 # TheCProgrammingLanguageExercises
-A git repository that contains my answers to the exercies in the book.
+A git repository that contains my answers to the exercies in the book. I have tried not to use any thing that the book hasn't tought us yet, for example including other headers. But there may be places where I fogot this.
