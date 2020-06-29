@@ -1,7 +1,12 @@
 #include <stdio.h>
 
+/*
+With line buffer
+*/
+
 #define MAXLINE 100
 #define MAXLINES 10
+#define LIMIT 5
 
 int getline2(char s[], int lim);
 void copy(char src[], char dest[]);
@@ -9,17 +14,16 @@ void copy(char src[], char dest[]);
 int main(){
 	char lines[MAXLINES][MAXLINE];
 	char current[MAXLINE];
-	int min = 80;
 	int len;
 	int freeindex = 0;
 
 	while(freeindex < MAXLINES-1 && (len = getline2(current, MAXLINE)) > 0){
-		if(len > min){
+		if(len > LIMIT){
 			copy(current, lines[freeindex++]);
 		}
 	}
 
-	printf("Lines over %d:\n", min);
+	printf("Lines over %d:\n", LIMIT);
 	for(int n = 0; n < freeindex; n++){
 		printf("%s\n", lines[n]);
 	}
