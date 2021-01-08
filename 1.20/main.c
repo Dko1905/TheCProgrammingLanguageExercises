@@ -2,6 +2,8 @@
 
 #define MAXLINE 100
 
+const int tabspaces = 8;
+
 int main(){
 	// 8 spaces for one tab
 	// 01234567
@@ -9,7 +11,7 @@ int main(){
 	// |  t   |
 	// 0123
 	//     0123
-	int n = 0, tabspaces = 8, c;
+	int n = 0, c;
 
 	while((c = getchar()) != EOF){
 		int spaces = tabspaces - (n % tabspaces);
