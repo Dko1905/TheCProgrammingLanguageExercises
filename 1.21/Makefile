@@ -11,7 +11,7 @@ all: a.out
 
 a.out: $(OBJECTS)
 	$(CC) $(OBJECTS) -o a.out $(MYLDFLAGS)
-
+	
 clean:
 	rm -f a.out $(OBJECTS)
 
