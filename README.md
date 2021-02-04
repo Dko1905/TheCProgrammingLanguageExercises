@@ -1,4 +1,5 @@
 # TheCProgrammingLanguageExercises
+![C CI](https://github.com/Dko1905/TheCProgrammingLanguageExercises/workflows/C%20CI/badge.svg)
 My own answers to the exercises in the book.
 
 ## Compiling
