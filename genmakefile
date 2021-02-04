@@ -1,0 +1,50 @@
+#!/bin/sh
+# This file generates a recursive makefile, why?
+# I created this script because the makefile got too big, because of the tall
+# project structure.
+
+FOLDERS=`find -type d -name "[0-9]*.[0-9]*" -printf "%p "`
+
+# Prefix
+MAKEFILE='.POSIX:
+
+include config.mk
+
+all: options section1
+
+options:
+	@echo Build options:
+	@echo "CFLAGS  = $(MYCFLAGS)"
+	@echo "LDFLAGS = $(MYLDFLAGS)"
+	@echo "CC      = $(CC)"
+
+section1: '
+
+# Set rules to section 1
+MAKEFILE="${MAKEFILE}${FOLDERS}
+
+"
+
+# Create rule for every subfolder.
+for folder in $FOLDERS; do
+	MAKEFILE="${MAKEFILE}${folder}:
+	\$(MAKE) -C ${folder} CONFIG_MK=\`pwd\`/config.mk all
+"
+done
+
+# Clean all subfolders.
+MAKEFILE="${MAKEFILE}
+clean:
+"
+for folder in $FOLDERS; do
+	MAKEFILE="${MAKEFILE}	\$(MAKE) -C ${folder} CONFIG_MK=\`pwd\`/config.mk clean
+"
+done
+
+# Apply phony to all subfolders.
+MAKEFILE="${MAKEFILE}
+.PHONY: all options section1 clean check \\
+	${FOLDERS}
+"
+
+printf "%s" "$MAKEFILE" > Makefile
