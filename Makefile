@@ -11,7 +11,7 @@ options:
 	@echo "CC      = $(CC)"
 
 section1: 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.10 1.11 1.12 1.13 1.14 1.15 \
-          1.16 1.17 1.18 1.19 1.20 1.21
+          1.16 1.17 1.18 1.19 1.20 1.21 1.22 1.23
 
 1.1:
 	$(MAKE) -C 1.1 CONFIG_MK=`pwd`/config.mk all
@@ -55,6 +55,10 @@ section1: 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.10 1.11 1.12 1.13 1.14 1.15 \
 	$(MAKE) -C 1.20 CONFIG_MK=`pwd`/config.mk all
 1.21:
 	$(MAKE) -C 1.21 CONFIG_MK=`pwd`/config.mk all
+1.22:
+	$(MAKE) -C 1.22 CONFIG_MK=`pwd`/config.mk all
+1.23:
+	$(MAKE) -C 1.23 CONFIG_MK=`pwd`/config.mk all
 
 clean:
 	$(MAKE) -C 1.1 CONFIG_MK=`pwd`/config.mk clean
@@ -78,7 +82,9 @@ clean:
 	$(MAKE) -C 1.19 CONFIG_MK=`pwd`/config.mk clean
 	$(MAKE) -C 1.20 CONFIG_MK=`pwd`/config.mk clean
 	$(MAKE) -C 1.21 CONFIG_MK=`pwd`/config.mk clean
+	$(MAKE) -C 1.22 CONFIG_MK=`pwd`/config.mk clean
+	$(MAKE) -C 1.23 CONFIG_MK=`pwd`/config.mk clean
 
 .PHONY: all options section1 clean check \
         1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 1.10 1.11 1.12 1.13 1.14 1.15 \
-        1.16 1.17 1.18 1.19 1.20 1.21
+        1.16 1.17 1.18 1.19 1.20 1.21 1.22 1.23

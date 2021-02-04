@@ -7,7 +7,7 @@ OBJECTS = main.o
 all: a.out
 
 .c.o:
-	$(CC) $(MYCFLAGS) -c $<
+	$(CC) $(MYCFLAGS) -Wno-pointer-arith -c $<
 
 a.out: $(OBJECTS)
 	$(CC) $(OBJECTS) -o a.out $(MYLDFLAGS)
