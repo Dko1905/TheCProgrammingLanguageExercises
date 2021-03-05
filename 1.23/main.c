@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/* Convert input of charecters and spaces into a string with appropriate 
- * number of charecters and tabs. 
+/* Remove comments from C code.
  */
 
 #define READLINE_STEP_SIZE 50
@@ -11,44 +10,40 @@
 unsigned char *readline(FILE* stream);
 
 int main() {
-	unsigned char *line = NULL, ch = 0, i = 0;
-	int state = 0;
+	int state = 0, ch = 0;
 
-	while ((line = readline(stdin)) != NULL && line != NULL + 1) {
-		for (i = 0; (ch = line[i]) != '\0'; ++i) {
-			if (state == 0) {
-				if (ch == '/') {
-					state = 1;
-				}
-			} else if (state == 1) {
-				if (ch == '*') {
-					state = 2;
-				} else {
-					printf("/");
-					state = 0;
-				}
-			} else if (state == 2) {
-				if (ch == '*') {
-					state = 3;
-				}
-			} else if (state == 3) {
-				if (ch == '/') {
-					state = 0;
-					continue;
-				} else {
-					state = 2;
-				}
+	while ((ch = getchar()) != EOF) {
+		if (state == 0) {
+			if (ch == '/') {
+				state = 1;
 			}
-			
-			if (state == 0) {
-				printf("%c", ch);
+		} else if (state == 1) {
+			if (ch == '*') {
+				state = 2;
+			} else {
+				printf("/");
+				state = 0;
+			}
+		} else if (state == 2) {
+			if (ch == '*') {
+				state = 3;
+			}
+		} else if (state == 3) {
+			if (ch == '/') {
+				state = 0;
+				continue;
+			} else {
+				state = 2;
 			}
 		}
-		if (state == 0)
-			printf("\n");
-		free(line);
+
+		if (state == 0) {
+			printf("%c", ch);
+		}
+		// if (state == 0)
+			// printf("\n");
 	}
-	
+
 	return 0;
 }
 
